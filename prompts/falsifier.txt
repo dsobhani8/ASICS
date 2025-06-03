@@ -1,0 +1,19 @@
+Before answering, provide your reasoning. Evaluate the alignment between the provided question
+and the task based on the title and description. Importantly, a question should be considered
+aligned even if the aspect connecting it to the criteria is not the primary focus of the question. The
+question isn’t required to completely satisfy all the criteria. If any part of the question, no matter
+how straightforward or simple, meets any aspect of the criteria, it should be considered aligned.
+Additionally, assess if the task description is too vague, ambiguous, or broadly interpreted to make
+a confident judgment on alignment and explicitly state the reasons for this uncertainty.
+Task Mode: {}
+Description of Task Mode: {}
+Question: {}
+Analysis: Examine the task mode and its description along with the provided question. Identify
+any elements in the question that relate to the task, regardless of their prominence. Reasoning:
+Discuss the connections or discrepancies found during the analysis. Explain why these points lead
+you to consider the question as aligned, unaligned, or too ambiguous to determine. Conclusion:
+Provide your final assessment based on the analysis, reasoning, and task feedback. If the question
+aligns with the task, state ’Conclusion: Aligned’. If the question does not align with the task, state
+’Conclusion: Unaligned’. If it’s unclear whether the question aligns due to vagueness or ambiguity
+in the task, state ’Conclusion: Uncertain’. If the task is deemed too vague or ambiguous, provide
+specific reasons and suggest how it might be refined.

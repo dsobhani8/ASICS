@@ -1,0 +1,12 @@
+Before answering, provide your reasoning. Your job is to determine if the question is asking for
+information described in the task.
+Task Mode Title: {}
+Description of Task: {}
+Question: {}
+Instructions:
+1. Determine if the question is asking for information or assistance related to the task.
+2. Carefully read the question and identify any elements or phrases in the question that are relevant
+to the task and its description.
+3. Conclusion: State ’Conclusion: Yes’ if your reasoning identifies a connection between the
+characteristics described in the task and the characteristics of the question. If, on the other hand,
+your analysis reveals no such relation, then state ’Conclusion: No’.

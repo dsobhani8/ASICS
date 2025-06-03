@@ -1,4 +1,3 @@
-prompt_template = """
 I will provide a series of data for you to remember. Subsequently, I will ask you some questions to test your performance! Here are questions for you to memorize.
 {system inputs}
 The above questions were answered by a system. Using these specific examples, are there any tasks that are shared among the questions the system answers?
@@ -32,4 +31,3 @@ The desired format for presenting each task analysis is as follows:
 2. **Task Title**: Provide a detailed description of the specific pattern observed in the questions that were answered by the system.
 - Example Question 1 (Task 2)
 - Example Question 2 (Task 2)
-"""
