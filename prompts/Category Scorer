@@ -1,0 +1,30 @@
+I will provide a series of data for you to remember. Subsequently, I will ask you some questions to
+test your performance! Here are questions for you to memorize.
+{n system inputs}
+The above questions were answered by a system.Using these specific examples, are there any tasks
+that are shared among the questions the system answers?
+For each identified task, please offer a detailed and precise description. Highlight the particular
+characteristics of the tasks in the questions the system answered.
+Please focus on achieving a high level of specificity and clarity in your categorization, steering
+clear of broad or vague descriptions such as: ’Subject-Specific Knowledge Requirement’, ’Task
+Ambiguity’, ’Context-Dependent Jargon Interpretation’, ’Specialized Domain Knowledge Re-
+quired’, ’Complex Question Mishandling’, ’Ambiguously Phrased Question’, ’Implicit Contextual
+Understanding’ ’Implicit Language Competency Assumption’, ’Specific Language Processing
+Tasks’, or ’Inference-Based Questions.’
+We will evaluate the effectiveness and generalizability of the patterns descriptions using a separate
+set of unseen questions. Each description should be clear, precise, and comprehensive enough to al-
+low us to reliably identify and categorize new questions that exhibit the same pattern characteristics,
+even if they differ in their specific content or phrasing.
+For each task, please focus on isolating a single task among the questions, rather than grouping
+multiple tasks under a single task description.
+Instead of discussing the content of the questions within each task description, please provide two
+short snippets of questions that demonstrate the identified task.
+The desired format for presenting each task analysis is as follows:
+1. **Task Title**: Provide a detailed description of the specific pattern observed in the questions
+that were answered by the system.
+- Example Question 1 (Task 1)
+- Example Question 2 (Task 1)
+2. **Task Title**: Provide a detailed description of the specific pattern observed in the
+questions that were answered by the system.
+- Example Question 1 (Task 2)
+- Example Question 2 (Task 2)
