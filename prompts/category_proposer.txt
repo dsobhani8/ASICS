@@ -24,10 +24,10 @@ Instead of discussing the content of the questions within each task description,
 
 The desired format for presenting each task analysis is as follows:
 
-1. **Task Title**: Provide a detailed description of the specific pattern observed in the questions that were answered by the system.
+1. **Task 1 Title**: Provide a detailed description of the specific pattern observed in the questions that were answered by the system.
 - Example Question 1 (Task 1)
 - Example Question 2 (Task 1)
 
-2. **Task Title**: Provide a detailed description of the specific pattern observed in the questions that were answered by the system.
+2. **Task 2 Title**: Provide a detailed description of the specific pattern observed in the questions that were answered by the system.
 - Example Question 1 (Task 2)
 - Example Question 2 (Task 2)
