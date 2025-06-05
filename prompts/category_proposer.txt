@@ -20,7 +20,7 @@ We will evaluate the effectiveness and generalizability of the pattern descripti
 
 For each task, please focus on isolating a single task among the questions, rather than grouping multiple tasks under a single task description.
 
-Instead of discussing the content of the questions within each task description, please provide two short snippets of questions that demonstrate the identified task.
+Instead of discussing the content of the questions within each task description, please provide two short snippets of questions that demonstrate the identified task after describing the title and description.
 
 The desired format for presenting each task analysis is as follows:
 
