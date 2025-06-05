@@ -62,26 +62,54 @@ def chunked_iterable(iterable, size):
         yield iterable[i : i + size]
 
 
-def process_chunk(chunk_text: str) -> pd.DataFrame:
+def debug_process_chunk(chunk_text: str):
     """
-    Given one raw response string (containing multiple tasks in the numbered format),
-    extract only the Task Title and Task Description (ignoring example questions).
-    Returns a DataFrame with columns ["Task Title", "Task Description"].
+    Print out the chunk text, the regex pattern, and the findall result.
     """
-    rows = []
-    pattern = r"\d+\.\s\*\*(.*?)\*\*:\s(.*?)(?=\n\s*-\s|\Z)"
+    print("===== RAW CHUNK BEGINS =====")
+    # Make newlines visible by replacing them with a literal ‘⏎\n’ marker
+    visible = chunk_text.replace("\n", "\\n\n")
+    print(visible)
+    print("===== RAW CHUNK ENDS =====\n")
+
+    # The regex we’re trying to use:
+    pattern = (
+        r"\d+\.\s"                                # “1. ”, “2. ”, etc.
+        r"\*\*.*?Title\*\*:\s*(.*?)\n"            # capture Task Title text up to newline
+        r"\*\*.*?Description\*\*:\s*"
+        r"(.*?)(?=\n\s*-\s|\Z)"                  # capture Task Description until “- ” or EOS
+    )
+    print("Regex pattern:")
+    print(pattern + "\n")
+
+    # Show what re.findall returns
     matches = re.findall(pattern, chunk_text, flags=re.DOTALL)
+    print(f"re.findall found {len(matches)} match(es):")
+    for i, (title, desc) in enumerate(matches, start=1):
+        print(f" Match #{i}:")
+        print("  Title raw →", repr(title[:50] + ("…" if len(title)>50 else "")))
+        print("  Desc raw  →", repr(desc[:50] + ("…" if len(desc)>50 else "")))
+    print("\n--- End of debug_process_chunk ---\n")
 
-    for title, desc in matches:
-        title = title.strip()
-        desc = desc.strip()
-        # Strip off any trailing “- Example…” lines from the description
-        desc = re.sub(r"\n\s*-\s.*", "", desc, flags=re.DOTALL).strip()
+def process_chunk(chunk_text: str) -> pd.DataFrame:
+    # (Call debug_process_chunk if you want to inspect why it isn’t matching)
+    debug_process_chunk(chunk_text)
+    print('here')
+    rows = []
+    pattern = (
+        r"\d+\.\s"
+        r"\*\*.*?Title\*\*:\s*(.*?)\n"
+        r"\*\*.*?Description\*\*:\s*"
+        r"(.*?)(?=\n\s*-\s|\Z)"
+    )
+    matches = re.findall(pattern, chunk_text, flags=re.DOTALL)
+    for title_text, desc_text in matches:
+        title_text = title_text.strip()
+        desc_text = desc_text.strip()
         rows.append({
-            "Task Title": title,
-            "Task Description": desc
+            "Task Title": title_text,
+            "Task Description": desc_text
         })
-
     return pd.DataFrame(rows)
 
 def main():
@@ -169,21 +197,32 @@ def main():
 
         reply = response.choices[0].message.content
         print(f"\n--- Chunk {chunk_idx} Response ---\n{reply}\n")
+        response_dict[chunk_idx] = reply
+
 
     df_list = []
     for chunk_idx, raw_text in response_dict.items():
         df_chunk = process_chunk(raw_text)
-        # (Optional) Tag each row with its chunk index or any other metadata:
+        print(raw_text)
+        print('----')
+        print(df_chunk)
+        # Optionally keep track of which chunk this row came from:
         df_chunk["chunk_index"] = chunk_idx
         df_list.append(df_chunk)
 
+    # 2) Concatenate all per‐chunk DataFrames (if any)
     if df_list:
         all_tasks_df = pd.concat(df_list, ignore_index=True)
-        # Save to CSV (or JSON—your choice):
-        all_tasks_df.to_csv("proposed_tasks.csv", index=False)
-        print(f"✅ Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
     else:
-        print("⚠️  No tasks extracted (response_dict was empty).")
+        # No data extracted—create an empty DataFrame with the right columns
+        all_tasks_df = pd.DataFrame(columns=["Task Title", "Task Description", "chunk_index"])
 
+    # 3) Save to CSV (or JSON)
+    all_tasks_df.to_csv("proposed_tasks.csv", index=False)
+    # Or, if you prefer JSON:
+    # all_tasks_df.to_json("proposed_tasks.json", orient="records", lines=False)
+
+    print(f"Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
+    print(all_tasks_df.head())
 if __name__ == "__main__":
     main()
