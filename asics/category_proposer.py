@@ -4,6 +4,8 @@ import argparse
 import pandas as pd
 from pathlib import Path
 import openai
+import re
+
 
 def load_dataset(dataset_name: str) -> pd.DataFrame:
     """
@@ -59,15 +61,41 @@ def chunked_iterable(iterable, size):
     for i in range(0, len(iterable), size):
         yield iterable[i : i + size]
 
+
+def process_chunk(chunk_text: str) -> pd.DataFrame:
+    """
+    Given one raw response string (containing multiple tasks in the numbered format),
+    extract only the Task Title and Task Description (ignoring example questions).
+    Returns a DataFrame with columns ["Task Title", "Task Description"].
+    """
+    rows = []
+    pattern = r"\d+\.\s\*\*(.*?)\*\*:\s(.*?)(?=\n\s*-\s|\Z)"
+    matches = re.findall(pattern, chunk_text, flags=re.DOTALL)
+
+    for title, desc in matches:
+        title = title.strip()
+        desc = desc.strip()
+        # Strip off any trailing “- Example…” lines from the description
+        desc = re.sub(r"\n\s*-\s.*", "", desc, flags=re.DOTALL).strip()
+        rows.append({
+            "Task Title": title,
+            "Task Description": desc
+        })
+
+    return pd.DataFrame(rows)
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Load a dataset and call OpenAI API in chunks to propose categories."
+        description="Load a dataset and call OpenAI API in chunks."
     )
     parser.add_argument(
         "--dataset",
         type=str,
         default="hpd",
-        help="Name of the dataset (without “.csv”). Default: “hpd” → loads “hpd_llama_vs_claude.csv”.",
+        help=(
+            "Name of the dataset (without “.csv”). "
+            "Default: “hpd” → loads “hpd_llama_vs_claude.csv”."
+        ),
     )
     parser.add_argument(
         "--chunk-size",
@@ -75,48 +103,62 @@ def main():
         default=60,
         help="Number of `system_input` rows to send per API call. Default: 60.",
     )
+    parser.add_argument(
+        "--percentage",        # ← new argument
+        type=float,
+        default=100.0,
+        help=(
+            "Percentage of the dataset to process (0–100). "
+            "Default: 100 (process all rows)."
+        ),
+    )
     args = parser.parse_args()
 
-    # 1) Read environment variables for OpenAI
+    # 1) Read OpenAI settings from env
     openai.api_key = os.getenv("OPENAI_API_KEY", "")
     if not openai.api_key:
-        raise RuntimeError("Environment variable OPENAI_API_KEY is not set.")
-
+        raise RuntimeError("OPENAI_API_KEY is not set")
     model_name = os.getenv("MODEL_NAME", "")
     if not model_name:
-        raise RuntimeError("Environment variable MODEL_NAME is not set.")
+        raise RuntimeError("MODEL_NAME is not set")
 
-    # 2) Load dataset
+    # 2) Load the full DataFrame
     try:
         df = load_dataset(args.dataset)
     except (FileNotFoundError, KeyError) as e:
         print(f"Error loading dataset: {e}")
         return
 
-    # 3) Load category proposer prompt template
+    # 3) Extract and clean the “system_input” column
+    all_inputs = df["system_input"].dropna().astype(str).tolist()
+
+    # 4) Apply percentage slicing (so we only keep that fraction of rows)  ← added percentage logic
+    if not (0.0 < args.percentage <= 100.0):
+        raise ValueError("--percentage must be > 0 and ≤ 100")
+    total_rows = len(all_inputs)
+    num_to_process = int(total_rows * (args.percentage / 100.0))
+    # If percentage = 100, num_to_process == total_rows
+    inputs = all_inputs[:num_to_process]
+
+    # 5) Load the prompt template from prompts/category_proposer.txt
     try:
         prompt_template = load_prompt_template()
     except FileNotFoundError as e:
         print(f"Error loading prompt template: {e}")
         return
 
-    # 4) Extract the “system_input” column, drop any NaNs
-    inputs = df["system_input"].dropna().astype(str).tolist()
+    response_dict = {}
 
-    # 5) For each chunk of size N, substitute {system inputs} and call the OpenAI API
+    # 6) Iterate over chunks of `inputs` and call the OpenAI API
     for chunk_idx, chunk in enumerate(chunked_iterable(inputs, args.chunk_size), start=1):
-        # Join the chunk into a single string, each input separated by two newlines
         joined_inputs = "\n\n".join(chunk)
-
-        # Insert into the prompt
         prompt = prompt_template.replace("{system inputs}", joined_inputs)
 
-        # Call ChatCompletion (assuming a chat‐based model)
         try:
             response = openai.chat.completions.create(
-                model="gpt-4o-mini-2024-07-18",
+                model="gpt-4.1-mini-2025-04-14",
                 messages=[
-                {"role": "system", "content": "You are an expert at extracting text from articles exactly without adding or deleting."},
+                {"role": "system", "content": "You are an expert at identifying categories in questions."},
                 {"role": "user", "content": prompt}
                 ]
             )
@@ -125,9 +167,23 @@ def main():
             print(f"[Chunk {chunk_idx}] OpenAI API error: {api_err}")
             continue
 
-        # Extract the assistant’s reply
-        content = response.choices[0].message.content.strip()
-        print(f"\n--- Chunk {chunk_idx} Response ---\n{content}\n")
+        reply = response.choices[0].message.content
+        print(f"\n--- Chunk {chunk_idx} Response ---\n{reply}\n")
+
+    df_list = []
+    for chunk_idx, raw_text in response_dict.items():
+        df_chunk = process_chunk(raw_text)
+        # (Optional) Tag each row with its chunk index or any other metadata:
+        df_chunk["chunk_index"] = chunk_idx
+        df_list.append(df_chunk)
+
+    if df_list:
+        all_tasks_df = pd.concat(df_list, ignore_index=True)
+        # Save to CSV (or JSON—your choice):
+        all_tasks_df.to_csv("proposed_tasks.csv", index=False)
+        print(f"✅ Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
+    else:
+        print("⚠️  No tasks extracted (response_dict was empty).")
 
 if __name__ == "__main__":
     main()
