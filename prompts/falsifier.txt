@@ -5,9 +5,9 @@ question isn’t required to completely satisfy all the criteria. If any part of
 how straightforward or simple, meets any aspect of the criteria, it should be considered aligned.
 Additionally, assess if the task description is too vague, ambiguous, or broadly interpreted to make
 a confident judgment on alignment and explicitly state the reasons for this uncertainty.
-Task Mode: {}
-Description of Task Mode: {}
-Question: {}
+Category Title: {Category Title}
+Description of Category: {Category Descrip}
+Question: {question}
 Analysis: Examine the task mode and its description along with the provided question. Identify
 any elements in the question that relate to the task, regardless of their prominence. Reasoning:
 Discuss the connections or discrepancies found during the analysis. Explain why these points lead
