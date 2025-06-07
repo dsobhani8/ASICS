@@ -1,8 +1,8 @@
 Before answering, provide your reasoning. Your job is to determine if the question is asking for
 information described in the task.
-Task Mode Title: {}
-Description of Task: {}
-Question: {}
+Task Title: {task_title}
+Description of Task: {task_description}
+Question: {question}
 Instructions:
 1. Determine if the question is asking for information or assistance related to the task.
 2. Carefully read the question and identify any elements or phrases in the question that are relevant
