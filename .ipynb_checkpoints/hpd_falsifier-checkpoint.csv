@@ -1,0 +1,39 @@
+question_index,question,category_index,category_title,category_description,falsifier_response
+0,why we should lower the learning rate if the model gets bigger,0,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","Please provide the Task Mode, Description of Task Mode, and the Question you would like me to analyze for alignment."
+0,why we should lower the learning rate if the model gets bigger,1,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Please provide the values for the placeholders {} (Task Mode, Description of Task Mode, and Question) so I can perform the evaluation accordingly."
+1,"When is the best case scenario of merge/insertion sort respectively?
+
+Choice 1 of 4: when the array is already sorted
+
+Choice 2 of 4:when the array is already sorted backward
+
+Choice 3 of 4:when the array is sorted by pairs
+
+Choice 4 of 4:there is no best case for merge/insertion sort
+
+Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
+sequential search, binary search, selection sort, insertion sort, merge sort",0,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","To provide an accurate evaluation, I need the specific values for:
+- Task Mode
+- Description of Task Mode
+- Question
+
+Please provide these details so I can analyze the alignment accordingly."
+1,"When is the best case scenario of merge/insertion sort respectively?
+
+Choice 1 of 4: when the array is already sorted
+
+Choice 2 of 4:when the array is already sorted backward
+
+Choice 3 of 4:when the array is sorted by pairs
+
+Choice 4 of 4:there is no best case for merge/insertion sort
+
+Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
+sequential search, binary search, selection sort, insertion sort, merge sort",1,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Please provide the task mode, description of the task mode, and the question you want me to analyze so I can perform the evaluation as requested."
+2,tell me something that will get me sleepy,0,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","To provide an accurate assessment, please provide the Task Mode, Description of Task Mode, and the specific Question you want me to evaluate."
+2,tell me something that will get me sleepy,1,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Please provide the values for the placeholders in the prompt:
+- Task Mode
+- Description of Task Mode
+- Question
+
+Once you provide these, I will complete the analysis accordingly."

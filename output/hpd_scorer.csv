@@ -1,0 +1,70 @@
+question_index,question,Task Title,Task Description,scorer_response,Scorer_Response
+0,why we should lower the learning rate if the model gets bigger,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","The task focuses on explaining algorithmic concepts, specifically providing clear rationale or best practices related to the behavior or tuning of algorithms or models. The question ""why we should lower the learning rate if the model gets bigger"" directly asks for a justification related to tuning (adjusting the learning rate) in the context of a change in model size. This aligns well with the task's aim to elucidate reasons behind particular algorithmic decisions and their impact on performance.
+
+Conclusion: Yes",Yes
+0,why we should lower the learning rate if the model gets bigger,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","The task focuses on generating non-technical, subjective, and creative responses aimed at evoking emotions or providing experiential content rather than technical or informational explanations. The question ""why we should lower the learning rate if the model gets bigger"" is clearly asking for a technical explanation related to machine learning concepts. It is seeking factual, analytical information about model training parameters and their effects. This is strictly within a technical domain and does not relate to generating non-technical, experiential, or emotionally evocative content.
+
+Conclusion: No",No
+1,"When is the best case scenario of merge/insertion sort respectively?
+
+Choice 1 of 4: when the array is already sorted
+
+Choice 2 of 4:when the array is already sorted backward
+
+Choice 3 of 4:when the array is sorted by pairs
+
+Choice 4 of 4:there is no best case for merge/insertion sort
+
+Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
+sequential search, binary search, selection sort, insertion sort, merge sort",Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","Step 1: Determine if the question asks for information or assistance related to the task.
+
+The task involves providing explanations regarding algorithmic behaviors, performance characteristics, tuning, or best practices, emphasizing cause-effect relationships and rationale behind design.
+
+Step 2: Analyze the question.
+
+The question asks:
+
+- When is the best case scenario of merge and insertion sort?
+
+- Ordering algorithms by their Big O runtime.
+
+Both parts relate directly to algorithmic performance characteristics: best case for specific sorting algorithms, and comparative Big O complexity.
+
+These fit well within the task description: providing clear explanations regarding algorithmic behavior and performance.
+
+Step 3: Conclusion.
+
+Since the question is about best case characteristics of algorithms and their efficiency comparisons, this matches the task description.
+
+Conclusion: Yes",Yes
+1,"When is the best case scenario of merge/insertion sort respectively?
+
+Choice 1 of 4: when the array is already sorted
+
+Choice 2 of 4:when the array is already sorted backward
+
+Choice 3 of 4:when the array is sorted by pairs
+
+Choice 4 of 4:there is no best case for merge/insertion sort
+
+Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
+sequential search, binary search, selection sort, insertion sort, merge sort",Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Reasoning:
+
+The task requires generating responses that are non-technical, subjective, creative, or experiential in nature. The goal is to provide evocative or emotional outputs, often conversational, rather than informational or analytical.
+
+The question, however, asks specifically about the best case scenarios for merge and insertion sort algorithms, and about ordering algorithms by their Big O runtimes. This request is clearly technical, factual, and analytical, focusing on computer science concepts and algorithmic complexity. It is seeking concrete knowledge, not a subjective or creative response.
+
+Therefore, the question does not align with the task that asks for non-technical, creative, or experiential output. Instead, it demands a technical explanation and factual ordering.
+
+Conclusion: No",No
+2,tell me something that will get me sleepy,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","The task is about explaining algorithmic concepts, including behavior, tuning, or performance characteristics of algorithms or models. Questions relevant to this task typically seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches.
+
+The question ""tell me something that will get me sleepy"" is a request for information that would induce sleepiness. It is not related to algorithmic concepts, algorithm behavior, or any computational procedures. It does not ask for explanations, reasons, or justifications regarding algorithms or models.
+
+Therefore, this question does not align with the task description.
+
+Conclusion: No",No
+2,tell me something that will get me sleepy,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Reasoning:
+The task is about generating contextual non-technical responses that are subjective, creative, and designed to evoke a psychological or emotional effect rather than conveying factual information or analysis. The example given in the task description includes producing statements aimed at inducing sleepiness. The question ""tell me something that will get me sleepy"" explicitly requests a response that aims to induce sleepiness, which aligns perfectly with the task's goal of creating non-technical, evocative statements to elicit a particular emotional or psychological state.
+
+Conclusion: Yes",Yes

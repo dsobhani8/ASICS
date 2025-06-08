@@ -207,7 +207,7 @@ def main():
         print('----')
         print(df_chunk)
         # Optionally keep track of which chunk this row came from:
-        df_chunk["chunk_index"] = chunk_idx
+        # df_chunk["chunk_index"] = chunk_idx
         df_list.append(df_chunk)
 
     # 2) Concatenate all per‐chunk DataFrames (if any)
@@ -215,12 +215,11 @@ def main():
         all_tasks_df = pd.concat(df_list, ignore_index=True)
     else:
         # No data extracted—create an empty DataFrame with the right columns
-        all_tasks_df = pd.DataFrame(columns=["Task Title", "Task Description", "chunk_index"])
+        all_tasks_df = pd.DataFrame(columns=["Task Title", "Task Description"])
 
     # 3) Save to CSV (or JSON)
-    all_tasks_df.to_csv("proposed_tasks.csv", index=False)
-    # Or, if you prefer JSON:
-    # all_tasks_df.to_json("proposed_tasks.json", orient="records", lines=False)
+    output_name = f"{args.dataset}_proposed_categories.csv"
+    all_tasks_df.to_csv(output_name, index=False)    
 
     print(f"Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
     print(all_tasks_df.head())
