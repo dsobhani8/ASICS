@@ -217,9 +217,11 @@ def main():
         # No data extracted—create an empty DataFrame with the right columns
         all_tasks_df = pd.DataFrame(columns=["Task Title", "Task Description"])
 
-    # 3) Save to CSV (or JSON)
-    output_name = f"{args.dataset}_proposed_categories.csv"
-    all_tasks_df.to_csv(output_name, index=False)    
+    output_dir = Path('output')
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    results_path = output_dir / f"{args.dataset}_proposed_categories.csv"
+    all_tasks_df.to_csv(results_path, index=False)
 
     print(f"Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
     print(all_tasks_df.head())

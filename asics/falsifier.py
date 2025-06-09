@@ -86,12 +86,7 @@ def main():
         default=None,
         help="Where to write the falsifier output. Defaults to <dataset>_falsifier.csv"
     )
-    parser.add_argument(
-        "--pause-seconds",
-        type=float,
-        default=1.0,
-        help="Seconds to sleep between API calls (to avoid rate limits)."
-    )
+
     args = parser.parse_args()
 
     # 1) Load env vars for OpenAI
@@ -140,16 +135,13 @@ def main():
             task_mode = str(row["Task Title"]).strip()
             task_desc = str(row["Task Description"]).strip()
 
-            # print('TASK', task_mode)
-            # print('DESC', task_desc)
-            # Substitute into the prompt
             prompt = (
                 prompt_template
                 .replace("{Category Title}", task_mode)
                 .replace("{Category Descrip}", task_desc)
                 .replace("{question}", question)
             )
-            print(prompt)
+            # print(prompt)
             # Call the model
             try:
                 response = openai.chat.completions.create(
@@ -166,36 +158,48 @@ def main():
 
             # Store record
             records.append({
-                # "question_index": q_idx - 1,
                 "question": question,
-                # "category_index": c_idx,
                 "Task Title": task_mode,
                 "Task Description": task_desc,
                 "falsifier_response": reply
             })
 
-            # Pause briefly to avoid hitting rate limits
-            time.sleep(args.pause_seconds)
 
-    # 6) Build DataFrame and save
-    df_out = pd.DataFrame.from_records(records)
+    # Build DataFrame
+    df_out = pd.DataFrame(records)
+    # Extract normalized Conclusion label
     df_out['Conclusion'] = (
-    df_out['falsifier_response']
-      .str.extract(r'(?i)Conclusion:\s*(aligned|unaligned|uncertain)\b', expand=False)
-      .str.capitalize()
+        df_out['falsifier_response']
+            .str.extract(r'(?i)Conclusion:\s*(aligned|unaligned|uncertain)\b', expand=False)
+            .str.capitalize()
     )
-    output_dir = Path("output")  
+
+    # Ensure output directory
+    output_dir = Path('output')
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # if args.output_csv:
-    #     out_path = Path(args.output_csv)
-    # else:
-    #     out_path = Path(f"{args.dataset}_falsifier.csv")
-    filename = args.output_csv if args.output_csv else f"{args.dataset}_falsifier.csv"
+    # 1) Save full results
+    results_path = output_dir / f"{args.dataset}_falsifier_results.csv"
+    df_out.to_csv(results_path, index=False)
+    print(f"Saved full falsifier results ({len(df_out)} rows) to '{results_path}'")
 
-    out_path = output_dir / filename
-    df_out.to_csv(out_path, index=False)
-    print(f"Saved falsifier results ({len(df_out)} rows) to '{out_path}'.")
+    # 2) Compute uncertainty rate per category
+    total_per_cat = df_out.groupby(['Task Title', 'Task Description']).size().rename('total')
+    print('Total_per cat', total_per_cat)
+    uncertain_per_cat = df_out[df_out['Conclusion']=='Uncertain'] \
+        .groupby(['Task Title', 'Task Description']).size().rename('uncertain')
+    print('uncertain_per_cat cat', uncertain_per_cat)
+
+    stats = pd.concat([total_per_cat, uncertain_per_cat], axis=1).fillna(0)
+    stats['uncertain_rate'] = stats['uncertain'] / stats['total']
+    print('stats',stats)
+    # Filter categories with <=10% uncertain
+    valid = stats[stats['uncertain_rate'] <= 0.10].reset_index()[['Task Title','Task Description']]
+
+    # Save filtered categories
+    falsified_path = output_dir / f"{args.dataset}_falsified_categories.csv"
+    valid.to_csv(falsified_path, index=False)
+    print(f"Saved {len(valid)} passed categories to '{falsified_path}' (<=10% uncertain rate)")
 
 if __name__ == "__main__":
     main()

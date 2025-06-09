@@ -160,12 +160,18 @@ def main():
     df_dedup = remove_similar_rows(df_embedded, threshold=args.threshold)
     df_dedup = df_dedup.drop(columns=["embedding"])
 
+    output_dir = Path('output')
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # results_path = output_dir / f"{args.dataset}_dedup.csv"
+    # df_dedup.to_csv(results_path, index=False)
+    # print(f"Saved full falsifier results ({len(df_dedup)} rows) to '{results_path}'")
     # Decide output filename
     if args.output_csv:
         out_path = args.output_csv
     else:
         base = Path(args.input_csv).stem
-        out_path = f"{base}_dedup.csv"
+        out_path = output_dir / f"{base}_dedup.csv"
 
     df_dedup.to_csv(out_path, index=False)
     print(f"\nSaved deduplicated results ({len(df_dedup)} rows) to '{out_path}'.")

@@ -80,10 +80,7 @@ def main():
         "--output-csv", type=str, default=None,
         help="Where to write the scorer output. Defaults to <dataset>_scorer.csv"
     )
-    parser.add_argument(
-        "--pause-seconds", type=float, default=1.0,
-        help="Seconds to sleep between API calls to avoid rate limits."
-    )
+
     args = parser.parse_args()
 
     # 1) Load API key and model
@@ -139,18 +136,16 @@ def main():
             records.append({
                 'question_index': q_idx - 1,
                 'question': question,
-                # 'category_index': c_idx,
                 'Task Title': title,
                 'Task Description': desc,
-                'scorer_response': reply
+                'full_scorer_response': reply
             })
-            time.sleep(args.pause_seconds)
-
+            
     # 6) Save results
 
     df_out = pd.DataFrame.from_records(records)
-    df_out['Scorer_Response'] = (
-    df_out['scorer_response']
+    df_out['short_scorer_response'] = (
+    df_out['full_scorer_response']
       .str.extract(r'(?i)Conclusion:\s*(yes|no)\b', expand=False)
       .str.capitalize()
     )

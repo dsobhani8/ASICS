@@ -1,8 +1,13 @@
-question_index,question,Task Title,Task Description,scorer_response,Scorer_Response
-0,why we should lower the learning rate if the model gets bigger,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","The task focuses on explaining algorithmic concepts, specifically providing clear rationale or best practices related to the behavior or tuning of algorithms or models. The question ""why we should lower the learning rate if the model gets bigger"" directly asks for a justification related to tuning (adjusting the learning rate) in the context of a change in model size. This aligns well with the task's aim to elucidate reasons behind particular algorithmic decisions and their impact on performance.
+question_index,question,Task Title,Task Description,full_scorer_response,short_scorer_response
+0,why we should lower the learning rate if the model gets bigger,Explaining Model Training Hyperparameter Adjustment,"This task involves providing a clear and precise explanation for why a particular training hyperparameter—in this case, the learning rate—should be modified in response to changes in the model’s size or complexity. The pattern requires the system to identify a causal or principled relationship between the scale of a model and the recommended adjustment to its training regimen. Questions in this task solicit explanations grounded in machine learning theory or empirical practice that justify why a certain strategy is beneficial for training stability or performance.","The task requires providing an explanation about why a training hyperparameter (the learning rate) should be adjusted in response to changes in a model's size or complexity. The question specifically asks, ""why we should lower the learning rate if the model gets bigger,"" which directly relates to the rationale behind adjusting the learning rate when the model scale increases. This question seeks a principled explanation grounded in machine learning theory or empirical practice about training stability and performance as those relate to model size. Therefore, the question aligns well with the task's focus.
 
 Conclusion: Yes",Yes
-0,why we should lower the learning rate if the model gets bigger,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","The task focuses on generating non-technical, subjective, and creative responses aimed at evoking emotions or providing experiential content rather than technical or informational explanations. The question ""why we should lower the learning rate if the model gets bigger"" is clearly asking for a technical explanation related to machine learning concepts. It is seeking factual, analytical information about model training parameters and their effects. This is strictly within a technical domain and does not relate to generating non-technical, experiential, or emotionally evocative content.
+0,why we should lower the learning rate if the model gets bigger,Generating Content with a Desired Psychological or Emotional Effect,"This task entails producing statements, ideas, or information crafted to induce a specific psychological or emotional state—in the given example, sleepiness. The pattern focuses on creating content whose primary function is to elicit a non-factual, sensory, or mood-related reaction, rather than directly answering a technical or knowledge-based query. This requires empathetic or experiential understanding and the ability to translate that into appropriate language or suggestions.","The task requires generating content that induces a specific psychological or emotional effect, such as sleepiness, focusing on mood-related or sensory reactions rather than technical explanations. The question asks, ""why we should lower the learning rate if the model gets bigger,"" which is a technical query related to machine learning model training parameters. It seeks factual, knowledge-based information rather than content crafted to elicit an emotional or psychological state.
+
+There are no phrases in the question that indicate a request for mood-related or experiential content, nor does it request language designed to induce a psychological effect.
+
+Conclusion: No",No
+0,why we should lower the learning rate if the model gets bigger,Identifying Algorithm Best-Case Scenarios from Multiple-Choice Options,This task requires selecting the correct best-case scenario for a given sorting algorithm from a set of multiple-choice options. It involves understanding how the input structure or initial data ordering impacts the algorithm’s performance and then mapping this understanding to a specific choice among alternatives. The pattern emphasizes precise algorithmic behavior knowledge and the ability to discern which input condition optimizes runtime or efficiency.,"Reasoning: The task involves identifying best-case scenarios for sorting algorithms based on input structure and performance, focusing on algorithm behavior and runtime optimization. The question ""why we should lower the learning rate if the model gets bigger"" pertains to machine learning model training and hyperparameter tuning, specifically the rationale behind adjusting the learning rate relative to model size. This question does not relate to sorting algorithms, input ordering, or performance scenarios in sorting algorithms.
 
 Conclusion: No",No
 1,"When is the best case scenario of merge/insertion sort respectively?
@@ -16,27 +21,14 @@ Choice 3 of 4:when the array is sorted by pairs
 Choice 4 of 4:there is no best case for merge/insertion sort
 
 Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
-sequential search, binary search, selection sort, insertion sort, merge sort",Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","Step 1: Determine if the question asks for information or assistance related to the task.
+sequential search, binary search, selection sort, insertion sort, merge sort",Explaining Model Training Hyperparameter Adjustment,"This task involves providing a clear and precise explanation for why a particular training hyperparameter—in this case, the learning rate—should be modified in response to changes in the model’s size or complexity. The pattern requires the system to identify a causal or principled relationship between the scale of a model and the recommended adjustment to its training regimen. Questions in this task solicit explanations grounded in machine learning theory or empirical practice that justify why a certain strategy is beneficial for training stability or performance.","Reasoning:
+The task is about explaining why a particular training hyperparameter—specifically, the learning rate—should be adjusted based on changes in the size or complexity of a machine learning model. It requires explanations grounded in machine learning theory or empirical practice related to training stability and performance.
 
-The task involves providing explanations regarding algorithmic behaviors, performance characteristics, tuning, or best practices, emphasizing cause-effect relationships and rationale behind design.
+The question presented is about sorting algorithms: it asks about the best-case scenarios for merge and insertion sort, and then it asks to order several algorithms by their Big O runtime. This question concerns algorithm analysis and sorting behavior, not hyperparameter adjustment, model training, or machine learning theory related to training regimen changes.
 
-Step 2: Analyze the question.
+There is no mention or implication of model size, complexity, or adjustments to training hyperparameters. Thus, the question does not fit the task's focus.
 
-The question asks:
-
-- When is the best case scenario of merge and insertion sort?
-
-- Ordering algorithms by their Big O runtime.
-
-Both parts relate directly to algorithmic performance characteristics: best case for specific sorting algorithms, and comparative Big O complexity.
-
-These fit well within the task description: providing clear explanations regarding algorithmic behavior and performance.
-
-Step 3: Conclusion.
-
-Since the question is about best case characteristics of algorithms and their efficiency comparisons, this matches the task description.
-
-Conclusion: Yes",Yes
+Conclusion: No",No
 1,"When is the best case scenario of merge/insertion sort respectively?
 
 Choice 1 of 4: when the array is already sorted
@@ -48,23 +40,53 @@ Choice 3 of 4:when the array is sorted by pairs
 Choice 4 of 4:there is no best case for merge/insertion sort
 
 Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
-sequential search, binary search, selection sort, insertion sort, merge sort",Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Reasoning:
+sequential search, binary search, selection sort, insertion sort, merge sort",Generating Content with a Desired Psychological or Emotional Effect,"This task entails producing statements, ideas, or information crafted to induce a specific psychological or emotional state—in the given example, sleepiness. The pattern focuses on creating content whose primary function is to elicit a non-factual, sensory, or mood-related reaction, rather than directly answering a technical or knowledge-based query. This requires empathetic or experiential understanding and the ability to translate that into appropriate language or suggestions.","Step 1: Determine if the question is asking for information or assistance related to the task.
 
-The task requires generating responses that are non-technical, subjective, creative, or experiential in nature. The goal is to provide evocative or emotional outputs, often conversational, rather than informational or analytical.
+The task is about generating content that induces a specific psychological or emotional effect, such as sleepiness. It involves creating statements or ideas to elicit sensory or mood-related reactions, not factual or technical knowledge.
 
-The question, however, asks specifically about the best case scenarios for merge and insertion sort algorithms, and about ordering algorithms by their Big O runtimes. This request is clearly technical, factual, and analytical, focusing on computer science concepts and algorithmic complexity. It is seeking concrete knowledge, not a subjective or creative response.
+Step 2: Carefully read the question and identify any elements or phrases relevant to the task.
 
-Therefore, the question does not align with the task that asks for non-technical, creative, or experiential output. Instead, it demands a technical explanation and factual ordering.
+The question is about the best case scenarios of merge sort and insertion sort and includes a follow-up about ordering algorithms by their Big O runtime. This is clearly a technical question asking for algorithmic knowledge and understanding of the computational complexity of sorting and searching algorithms.
+
+There is no indication that it is asking for producing content to induce a psychological or emotional effect. It does not ask for sensory, mood-related, or experiential content. Instead, it is a typical computer science knowledge question.
+
+Step 3: Conclusion
+
+Since the question is a technical knowledge-based inquiry, it does not align with the characteristics of the task focused on generating content with a psychological or emotional effect.
 
 Conclusion: No",No
-2,tell me something that will get me sleepy,Explanation of Algorithmic Concepts and Practices,"This task involves providing clear, concise explanations regarding the behavior, tuning, or performance characteristics of algorithms or models. Questions under this task seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches, requiring answers that elucidate why certain actions are taken or how specific algorithmic conditions affect performance. The responses typically address cause-effect relationships or rationale behind algorithmic design choices.","The task is about explaining algorithmic concepts, including behavior, tuning, or performance characteristics of algorithms or models. Questions relevant to this task typically seek reasons, justifications, or best practices related to computational procedures or algorithmic approaches.
+1,"When is the best case scenario of merge/insertion sort respectively?
 
-The question ""tell me something that will get me sleepy"" is a request for information that would induce sleepiness. It is not related to algorithmic concepts, algorithm behavior, or any computational procedures. It does not ask for explanations, reasons, or justifications regarding algorithms or models.
+Choice 1 of 4: when the array is already sorted
 
-Therefore, this question does not align with the task description.
+Choice 2 of 4:when the array is already sorted backward
 
-Conclusion: No",No
-2,tell me something that will get me sleepy,Generation of Contextual Non-Technical Responses,"This task entails producing a response that diverges from a technical or academic domain and instead delivers a subjective, creative, or experiential output designed to fulfill a non-informational purpose. Specifically, it involves generating short descriptive or evocative statements aimed at eliciting a particular psychological or emotional effect in the user—such as inducing sleepiness—rather than conveying factual knowledge or analytical reasoning. The response is expected to be natural, relatable, and simulate conversational style rather than strictly formal or analytical language.","Reasoning:
-The task is about generating contextual non-technical responses that are subjective, creative, and designed to evoke a psychological or emotional effect rather than conveying factual information or analysis. The example given in the task description includes producing statements aimed at inducing sleepiness. The question ""tell me something that will get me sleepy"" explicitly requests a response that aims to induce sleepiness, which aligns perfectly with the task's goal of creating non-technical, evocative statements to elicit a particular emotional or psychological state.
+Choice 3 of 4:when the array is sorted by pairs
+
+Choice 4 of 4:there is no best case for merge/insertion sort
+
+Also, Order the following algorithms from smallest Big O runtime to largest Big O runtime (if two algorithms have the same runtime sort them alphabetically):
+sequential search, binary search, selection sort, insertion sort, merge sort",Identifying Algorithm Best-Case Scenarios from Multiple-Choice Options,This task requires selecting the correct best-case scenario for a given sorting algorithm from a set of multiple-choice options. It involves understanding how the input structure or initial data ordering impacts the algorithm’s performance and then mapping this understanding to a specific choice among alternatives. The pattern emphasizes precise algorithmic behavior knowledge and the ability to discern which input condition optimizes runtime or efficiency.,"1. The task requires identifying the best-case scenario for a sorting algorithm from multiple-choice options, focusing on how the initial data ordering affects runtime or efficiency.
+
+2. The question explicitly asks: ""When is the best case scenario of merge/insertion sort respectively?"" It provides multiple choices for identifying the best case scenario, which directly aligns with the task's goal of selecting the correct best-case input condition for sorting algorithms.
+
+3. Additionally, the question includes a follow-up to order algorithms by Big O runtime, which, while slightly expanding the scope, still relates to algorithmic performance understanding, consistent with the task’s emphasis on algorithm runtime and behavior.
+
+Conclusion: The question is directly asking for information described in the task, since it seeks to identify the best-case scenario for specific sorting algorithms, matching the task’s focus.
 
 Conclusion: Yes",Yes
+2,tell me something that will get me sleepy,Explaining Model Training Hyperparameter Adjustment,"This task involves providing a clear and precise explanation for why a particular training hyperparameter—in this case, the learning rate—should be modified in response to changes in the model’s size or complexity. The pattern requires the system to identify a causal or principled relationship between the scale of a model and the recommended adjustment to its training regimen. Questions in this task solicit explanations grounded in machine learning theory or empirical practice that justify why a certain strategy is beneficial for training stability or performance.","The task is specifically about explaining why a training hyperparameter (learning rate) should be adjusted based on the size or complexity of a machine learning model. It requires explanations grounded in machine learning theory or empirical practice related to model training strategies.
+
+The question ""tell me something that will get me sleepy"" is asking for advice or information related to inducing sleepiness. It does not relate to machine learning, model training, hyperparameters, learning rates, or adjustments based on model size or complexity. There is no connection between the question content and the task requirements.
+
+Conclusion: No",No
+2,tell me something that will get me sleepy,Generating Content with a Desired Psychological or Emotional Effect,"This task entails producing statements, ideas, or information crafted to induce a specific psychological or emotional state—in the given example, sleepiness. The pattern focuses on creating content whose primary function is to elicit a non-factual, sensory, or mood-related reaction, rather than directly answering a technical or knowledge-based query. This requires empathetic or experiential understanding and the ability to translate that into appropriate language or suggestions.","The task revolves around generating content intended to induce a specific psychological or emotional effect, such as making someone feel sleepy. The question ""tell me something that will get me sleepy"" directly asks for content that causes sleepiness, which fits the task description perfectly. The question's intent is to receive a statement or idea that elicits a mood-related reaction (sleepiness), not a factual or technical answer. Therefore, the question is clearly aligned with the task.
+
+Conclusion: Yes",Yes
+2,tell me something that will get me sleepy,Identifying Algorithm Best-Case Scenarios from Multiple-Choice Options,This task requires selecting the correct best-case scenario for a given sorting algorithm from a set of multiple-choice options. It involves understanding how the input structure or initial data ordering impacts the algorithm’s performance and then mapping this understanding to a specific choice among alternatives. The pattern emphasizes precise algorithmic behavior knowledge and the ability to discern which input condition optimizes runtime or efficiency.,"The task focuses on identifying the best-case scenarios for sorting algorithms based on input data conditions and performance implications. It is concerned with algorithmic behavior and specific knowledge about sorting efficiency from multiple-choice options.
+
+The question ""tell me something that will get me sleepy"" is about inducing sleepiness, which is unrelated to sorting algorithms, best-case scenarios, or algorithmic performance. There is no mention or implication of algorithms, sorting, input data characteristics, or efficiency considerations.
+
+Since the question does not relate to understanding or selecting best-case scenarios for algorithms, it does not pertain to the information or assistance sought by the task.
+
+Conclusion: No",No
