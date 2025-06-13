@@ -2,12 +2,7 @@
 
 Under construction
 
-
-To upload your own dataset ensure your file is a csv with 'system_input' and 'is_correct' as the variable names. 
-
-In the HPD is_correct=True represents whether Llama won.
-
-## Environment Variables
+## Running ASICS
 
 Before running any of the ASICS scripts, you need to set the following variables:
 
@@ -24,3 +19,9 @@ cd ASICS
 chmod +x asics/run_asics.py
 python asics/run_asics.py --input_dataset hpd
 ```
+
+## Dataset Structure
+
+To upload your own dataset ensure your file is a csv with 'system_input' and 'is_correct' as the variable names. The value for is_correct should be True or False.
+
+In the HPD is_correct=True represents whether Llama won.
