@@ -7,7 +7,14 @@ To upload your own dataset ensure your file is a csv with 'system_input' and 'is
 
 In the HPD is_correct=True represents whether Llama won.
 
-Environment variables that you will need to specifiy are OPENAI_API_KEY and MODEL_NAME.
+## Environment Variables
+
+Before running any of the ASICS scripts, you need to set the following variables:
+
+```bash
+export OPENAI_API_KEY="your_openai_api_key_here"
+export MODEL_NAME="gpt-4.1-mini-2025-04-14"
+```
 
 To run ASICS on the full Human Preference Dataset (HPD) use:
 
