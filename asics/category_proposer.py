@@ -225,5 +225,51 @@ def main():
 
     print(f"Saved {len(all_tasks_df)} total tasks to 'proposed_tasks.csv'")
     print(all_tasks_df.head())
+
+def proposer(
+    df: pd.DataFrame,
+    chunk_size: int = 60,
+    percentage: float = 100.0,
+    model: str = None,
+    api_key: str = None
+) -> pd.DataFrame:
+    """
+    Given a DataFrame with a 'system_input' column, slice it by `percentage`,
+    chunk it by `chunk_size`, call the OpenAI API, and return a DataFrame
+    of {'Task Title','Task Description'} rows.
+    """
+
+    # 1. setup api key & model
+    openai.api_key = api_key or os.getenv("OPENAI_API_KEY")
+    model_name   = model   or os.getenv("MODEL_NAME")
+    if not openai.api_key or not model_name:
+        raise RuntimeError("Need MODEL_NAME & OPENAI_API_KEY")
+
+    # 2. pull questions out & slice
+    inputs = df["system_input"].dropna().astype(str).tolist()
+    if not (0 < percentage <= 100):
+        raise ValueError("percentage must be 0–100")
+    cutoff = int(len(inputs) * (percentage / 100.0))
+    inputs = inputs[:cutoff]
+
+    # 3. call API in chunks
+    responses = []
+    prompt_tpl = load_prompt_template()
+    for chunk in chunked_iterable(inputs, chunk_size):
+        joined = "\n\n".join(chunk)
+        payload = prompt_tpl.replace("{system inputs}", joined)
+        resp = openai.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role":"system","content":"You are an expert at identifying categories in questions."},
+                {"role":"user",  "content":payload}
+            ]
+        )
+        responses.append(resp.choices[0].message.content)
+
+    # 4. parse out all Task Title/Description pairs
+    dfs = [ process_chunk(text) for text in responses ]
+    return pd.concat(dfs, ignore_index=True)
+
 if __name__ == "__main__":
     main()
