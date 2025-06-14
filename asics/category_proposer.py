@@ -6,6 +6,7 @@ from pathlib import Path
 import openai
 import re
 
+from query import chat_completion
 
 def load_dataset(dataset_name: str) -> pd.DataFrame:
     """
@@ -183,16 +184,18 @@ def main():
         prompt = prompt_template.replace("{system inputs}", joined_inputs)
 
         try:
-            response = openai.chat.completions.create(
-                model="gpt-4.1-mini-2025-04-14",
-                messages=[
-                {"role": "system", "content": "You are an expert at identifying categories in questions."},
-                {"role": "user", "content": prompt}
-                ]
-            )
+            # response = openai.chat.completions.create(
+            #     model=os.getenv('MODEL_NAME'),
+            #     messages=[
+            #     {"role": "system", "content": "You are an expert at identifying categories in questions."},
+            #     {"role": "user", "content": prompt}
+            #     ]
+            # )
+            response = chat_completion(prompt)
+
 
         except Exception as api_err:
-            print(f"[Chunk {chunk_idx}] OpenAI API error: {api_err}")
+            print(f"[Chunk {chunk_idx}] API error: {api_err}")
             continue
 
         reply = response.choices[0].message.content

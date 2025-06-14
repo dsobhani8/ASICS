@@ -6,6 +6,7 @@ import openai
 import time
 from pathlib import Path
 import re
+from query import chat_completion
 
 def load_dataset(dataset_name: str) -> pd.DataFrame:
     """
@@ -92,14 +93,16 @@ def run_scorer(
                 .replace('{question}', question)
             )
             try:
-                resp = openai.chat.completions.create(
-                    model=os.getenv('MODEL_NAME'),
-                    messages=[
-                        {"role": "system",  "content": "You are an expert at identifying categories in questions."},
-                        {"role": "user",    "content": prompt}
-                    ]
-                )
-                reply = resp.choices[0].message.content
+                # respoonse = openai.chat.completions.create(
+                #     model=os.getenv('MODEL_NAME'),
+                #     messages=[
+                #         {"role": "system",  "content": "You are an expert at identifying categories in questions."},
+                #         {"role": "user",    "content": prompt}
+                #     ]
+                # )
+                response = chat_completion(prompt)
+
+                reply = response.choices[0].message.content
             except Exception:
                 reply = ""
             # parse short response

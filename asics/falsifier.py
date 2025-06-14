@@ -6,6 +6,7 @@ import openai
 import time
 import re
 from pathlib import Path
+from query import chat_completion
 
 
 def load_dataset(dataset_name: str) -> pd.DataFrame:
@@ -79,14 +80,16 @@ def run_falsifier(
                 .replace('{question}', question)
             )
             try:
-                resp = openai.chat.completions.create(
-                    model=os.getenv('MODEL_NAME'),
-                    messages=[
-                        {"role":"system","content":"You are an expert at identifying categories in questions."},
-                        {"role":"user","content":prompt}
-                    ]
-                )
-                text = resp.choices[0].message.content
+                # response = openai.chat.completions.create(
+                #     model=os.getenv('MODEL_NAME'),
+                #     messages=[
+                #         {"role":"system","content":"You are an expert at identifying categories in questions."},
+                #         {"role":"user","content":prompt}
+                #     ]
+                # )
+                response = chat_completion(prompt)
+
+                text = response.choices[0].message.content
             except Exception:
                 text = ""
             m = re.search(r'(?i)Conclusion:\s*(aligned|unaligned|uncertain)\b', text)
