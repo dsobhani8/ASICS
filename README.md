@@ -26,4 +26,4 @@ To upload your own dataset ensure your file is a csv with 'system_input' and 'is
 
 - In the HPD is_correct=True represents whether Llama was preferred to Claude.
 
-- In the Deepseek dataset is_correct=True represents whether deepseek answered a given query from BigCodeBench correctly. Deepseek-coder-33B results were obtained from the BigCodeBench repo in the summer of 2024.
+- In the Deepseek dataset is_correct=True represents whether deepseek answered a given query from BigCodeBench correctly. Deepseek-coder-33B results were obtained from the BigCodeBench repo in the summer of 2024. Use ```bash  --input_dataset deepseek``` to run asics on this dataset.
