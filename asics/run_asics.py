@@ -26,7 +26,16 @@ def compute_overall_score(df_scored: pd.DataFrame) -> float:
 def run_asics(diff_threshold: float, cosine_sim: float, percentage: float, input_dataset: str):
     # 1) Load original dataset
     data_dir = Path(os.path.expanduser("~/ASICS/data"))
-    ds_file = data_dir / f"{input_dataset}.csv" if input_dataset.lower() != 'hpd' else data_dir / "hpd_llama_vs_claude.csv"
+    SPECIAL_FILES = {
+        "hpd":      "hpd_llama_vs_claude.csv",
+        "deepseek": "deepseek_coder-33b-instruct_bigcodebench_results.csv",
+        # add more here as needed…
+    }
+
+    key = input_dataset.lower()
+    filename = SPECIAL_FILES.get(key, f"{input_dataset}.csv")
+    ds_file = data_dir / filename
+
     df = pd.read_csv(ds_file)
 
     # 2) Sample percentage of data
