@@ -2,6 +2,10 @@
 
 Under construction
 
+## General
+
+Automated System Input Categorization Scheme (ASICS) takes in text samples, usually LM user queries or questions from a dataset, and the performance of a system on each system according to some metric (usually a human preference label or classification accuracy). It returns ```{dataset_name}_significance_results``` which contains a categories a LM discovered within the text samples along with the performance of the system on samples that match that category description.   
+
 ## Running ASICS
 
 Before running any of the ASICS scripts, you need to set the following variables:
