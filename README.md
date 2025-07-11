@@ -44,3 +44,5 @@ Currently our default LM is ```gpt-4.1-mini```. If you want to use different lan
 ```--cosine-sim```: Cosine similarity threshold for removing similar categories. default=0.82
 
 ```--percentage```: Percentage of the input dataset to use (0 < percentage ≤ 100). default=100.0.
+
+```--min-aligned```: Minimum number of aligned samples per category on X to retain it. default=1.
