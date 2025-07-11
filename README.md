@@ -32,3 +32,7 @@ To upload your own dataset ensure your file is a csv with 'system_input' and 'is
 
 - In the Deepseek dataset is_correct=True represents whether deepseek answered a given query from BigCodeBench correctly. Deepseek-coder-33B results were obtained from the BigCodeBench repo in the summer of 2024. Use
   ```--input_dataset deepseek``` to run asics on this dataset.
+
+## Changing LM Components
+
+Currently our default LM is ```gpt-4.1-mini```. If you want to use different language models, you can implement the inference in ```asics/query.py```. If you want to use different prompts, you can modify the templates in ```asics/prompts/```.
