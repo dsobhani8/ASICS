@@ -37,7 +37,7 @@ To upload your own dataset ensure your file is a csv with 'system_input' and 'is
 
 Currently our default LM is ```gpt-4.1-mini```. If you want to use different language models, you can implement the inference in ```asics/query.py```. If you want to use different prompts, you can modify the templates in ```asics/prompts/```.
 
-### Hyperparameters 
+### Hyperparameters for run_asics.py
 
 ```--difference-threshold```: Minimum difference (category rate - overall rate) to keep a category. default=0.05
 
