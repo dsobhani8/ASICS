@@ -36,3 +36,11 @@ To upload your own dataset ensure your file is a csv with 'system_input' and 'is
 ## Changing LM Components
 
 Currently our default LM is ```gpt-4.1-mini```. If you want to use different language models, you can implement the inference in ```asics/query.py```. If you want to use different prompts, you can modify the templates in ```asics/prompts/```.
+
+### Hyperparameters 
+
+```--difference-threshold```: Minimum difference (category rate - overall rate) to keep a category. default=0.05
+
+```--cosine-sim```: Cosine similarity threshold for removing similar categories. default=0.82
+
+```--percentage```: Percentage of the input dataset to use (0 < percentage ≤ 100). default=100.0.
